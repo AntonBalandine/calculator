@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- <meta charset=""> -->
+    <meta charset="UTF-8" />
+    <title>KeyCalculator</title>
+    <link
+      rel="shortcut icon"
+      href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0jzT9Hdra-69lH8ZIq7fdJK8dhgs0pfkhYg&usqp=CAU"
+    />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+
+  <body>
+    <table>
+      <tr>
+        <td>
+          <a href="/index.html">
+            <img
+              src="https://play-lh.googleusercontent.com/NfbYUTlotWmwk5nGtfwvGTqP2BGZycbuQ0LAVQ-zt5ftHaBk0CPWEXrBXk1Art1tfsg"
+              alt=""
+              class="SCE"
+            />
+          </a>
+        </td>
+        <td>
+          <h1>KeyCalculator</h1>
+        </td>
+      </tr>
+    </table>
+    <hr />
+    <div class="SubjectChoose">
+      <div>
+        <h2>חישוב גזירה</h2>
+        <div class="images">
+          <table>
+            <tr>
+              <img src="/images/AreaOfKey.png" width="200" />
+            </tr>
+            <tr>
+              <img src="/images/ForceOnKey.png" width="208" />
+            </tr>
+            <tr>
+              <img src="/images/DistansOnKey.png" width="194" />
+            </tr>
+          </table>
+        </div>
+        <div class="cut">
+          <label for="valueL"> Value of <b>L</b> [mm]</label>
+          <input type="number" id="valueL-cut" />
+          <br />
+          <br />
+          <label for="valueT"> Value of <b>T</b> [N*mm]:</label>
+          <input type="number" id="valueT-cut" />
+          <br />
+          <br />
+          <label for="valueSy"> Value of <b>Sy</b> [N/mm^2]:</label>
+          <input type="number" id="valueSy" name="valueSy" />
+          <br />
+          <br />
+          <label for="valueFS-cut"> Value of <b>FS</b> (מקדם בטחון):</label>
+          <input type="number" id="valueFS-cut" />
+          <br />
+          <br />
+          <div class="result-container">
+            <button id="calculate-key-cut">Result</button>
+            <span id="result-cut"></span>
+          </div>
+        </div>
+      </div>
+      <div class="expand">
+        <div class="center">
+          <h2>חישוב מעיכה</h2>
+          <table>
+            <tr>
+              <img src="/images/ForceOnKey.png" width="208" />
+            </tr>
+          </table>
+          <div class="squashing">
+            <label for="valueL"> Value of <b>L</b> [mm]</label>
+            <input type="number" id="valueL" />
+            <br />
+            <br />
+            <label for="valueT"> Value of <b>T</b> [N*mm]:</label>
+            <input type="number" id="valueT" />
+            <br />
+            <br />
+            <label for="valueSc"> Value of <b>Sc</b> [N/mm^2]:</label>
+            <input type="number" id="valueSc" name="valueSc" />
+            <br />
+            <br />
+            <label for="valueFS"> Value of <b>FS</b> (מקדם בטחון):</label>
+            <input type="number" id="valueFS" />
+            <br />
+            <br />
+            <div class="result-container">
+              <button id="calculate-key-squash">Result</button>
+              <span id="result-squash"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="new.js"></script>
+</html>

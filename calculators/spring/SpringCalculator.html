@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta chearset="UTF-8" />
+
+    <meta name="Claculator" content="mechanical Calculator" />
+
+    <title>SpringCalculator</title>
+
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+
+  <body>
+    <table>
+      <tr>
+        <td>
+          <a href="/index.html">
+            <img
+              src="https://play-lh.googleusercontent.com/NfbYUTlotWmwk5nGtfwvGTqP2BGZycbuQ0LAVQ-zt5ftHaBk0CPWEXrBXk1Art1tfsg"
+              alt=""
+              class="SCE"
+            />
+          </a>
+        </td>
+        <td>
+          <h1>SpringCalculator</h1>
+        </td>
+      </tr>
+    </table>
+    <hr />
+    <div class="padding-left">
+      <div class="stressformula">
+        <h2>לפי אילוצים סטטים 'd' חישוב קוטר טיל</h2>
+        <img src="/images/FSpring.png" width="200" alt="" />
+        <br />
+        <br />
+        <label for="ValueF">Value of <b>F</b> [mm]:&nbsp&nbsp&nbsp&nbsp</label>
+        <input type="number" min="0.0001" id="ValueF" />
+        <br />
+        <br />
+        <!-- 
+        <br />
+        <br />
+        <label for="ValueK"
+          >Value of
+          <b>K</b> [-]:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label
+        >
+        <input type="number" min="0.00001" id="ValueK" /> -->
+        <label for="ValueFS"
+          >Value of
+          <b>FS</b
+          >:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label
+        >
+        <input type="number" min="1" id="ValueFS" />
+        <br />
+        <br />
+        <label for="ValueMaxCut"
+          >Maximum <b>cut stregth %</b> from S<small>ut</small>:</label
+        >
+        <input type="number" min="0" max="100" id="ValueMaxCut" />
+        <br />
+        <br />
+        <label for="ValueC">Value of <b>C</b> [N/mm]:</label>
+        <input type="number" min="0.0001" id="ValueC" />
+        <br />
+        <br />
+
+        <label for="static-constraint">Static Constraint</label>
+        <input type="radio" name="constraint" id="static-constraint" checked />
+        <label for="dynamic-constraint">Dynamic Constraint</label>
+        <input type="radio" name="constraint" id="dynamic-constraint" />
+
+        <div id="FminContainer" style="display: none">
+          <label for="ValueFmin">F minimum :</label>
+          <input type="number" min="0.0001" id="ValueFmin" />
+        </div>
+        <div id="dContainer" style="display: none">
+          <label for="smallDiDynamic">Small d :</label>
+          <input type="number" min="0.0001" id="smallDiDynamic" />
+        </div>
+        <div id="nContainer" style="display: none">
+          <div>(optional for coil count calc)</div>
+          <label for="delta">δ :</label>
+          <input type="number" min="0.0001" id="delta" />
+          <label for="G">G :</label>
+          <input type="number" min="0.0001" id="G" />
+        </div>
+      </div>
+      <br />
+      <br />
+      <div class="result-container">
+        <button id="stressformula">Result</button>
+        <span id="resultspring"></span>
+        <br />
+        <br />
+      </div>
+      <br />
+      <br />
+      <div class="wahl">
+        <h2>לפי אילוצים דינמיים</h2>
+        <label for="ValueC">Value of <b>C</b> [-]:</label>
+        <input type="number" id="ValueCb" />
+        <br />
+        <br />
+        <div class="result-container">
+          <button id="calculatespringw">Result</button>
+          <span id="resultspringw"></span>
+        </div>
+      </div>
+      <div class="tau">
+        <h2>משוואת מאמץ מתוקנת</h2>
+        <label for="valueF">Value of <b>F</b>[N]</label>
+        <input type="number" id="vaueF" />
+        <br />
+        <br />
+        <label for="ValueK">Value of <b>K</b> [-]:&nbsp&nbsp&nbsp&nbsp</label>
+        <input type="number" min="0.0001" id="ValueK" />
+        <br />
+        <br />
+        <div class="result-container">
+          <button id="calculatespringtau">Result</button>
+          <span id="resultspringtau"></span>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="Spring.js"></script>
+</html>

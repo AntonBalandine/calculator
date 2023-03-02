@@ -1,0 +1,49 @@
+h1 {
+  color: rgb(0, 0, 0);
+}
+body {
+  background-color: #e5ffe5;
+}
+.SCE {
+  width: 100px;
+  border-radius: 55%;
+}
+body {
+  font-size: 18px;
+}
+
+.padding-left {
+  padding-left: 5%;
+}
+
+.expand {
+  flex: 1;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 30%;
+}
+
+.SubjectChoose {
+  display: flex;
+  justify-content: space-between;
+}
+
+.wahl {
+}
+.result-container {
+  display: flex;
+  width: 300px;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 15px;
+  padding: 10px;
+  box-shadow: 2px 2px 15px rgb(0 0 0 / 45%);
+}
+.images {
+  border-radius: 30%;
+}
