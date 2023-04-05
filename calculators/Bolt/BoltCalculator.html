@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta chearset="UTF-8" />
+
+    <meta name="Claculator" content="mechanical Calculator" />
+
+    <link rel="stylesheet" href="../../style.css" />
+
+    <title>BoltCalculator</title>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td>
+          <a href="/index.html">
+            <img
+              src="https://play-lh.googleusercontent.com/NfbYUTlotWmwk5nGtfwvGTqP2BGZycbuQ0LAVQ-zt5ftHaBk0CPWEXrBXk1Art1tfsg"
+              alt=""
+              class="SCE"
+            />
+          </a>
+        </td>
+        <td>
+          <h1>BoltCalculator</h1>
+        </td>
+      </tr>
+    </table>
+    <hr />
+
+    <div class="padding-leftbolt">
+      <div>
+        <h2 class="TITLE">מתיחות נדרשת בברגים לעמידה בעומסים</h2>
+        <h2 class="TITLE">מתיחה</h2>
+        <img src="/images/בורג במתיכה.png" width="400" border-radius="50%" />
+        <br />
+        <br />
+        <label for="ValueF"> Value of <b>F</b> [N]:&nbsp&nbsp</label>
+        <input type="number" min="0.0001" id="ValueF" />
+        <br />
+        <br />
+        <label for="ValueN"> Value of <b>n</b> (מס' ברגים)&nbsp&nbsp</label>
+        <input type="number" min="1" step="1" id="ValueN" />
+        <br />
+        <br />
+        <div class="result-container">
+          <button id="calculate-bolt-tension">Result</button>
+          <span id="result-bolt-tension"></span>
+        </div>
+      </div>
+
+      <div class="cut">
+        <h2 class="TITLE">גזירה</h2>
+        <img src="/images/בורג בגזירה.png" width="400" border-radius="50%" />
+        <br />
+        <br />
+        <label for="ValueFCut"> Value of <b>F</b> [N]:&nbsp&nbsp</label>
+        <input type="number" min="0.0001" id="ValueFCut" />
+        <br />
+        <br />
+        <label for="ValuenCut"> Value of <b>n</b> (מס' ברגים)&nbsp&nbsp</label>
+        <input type="number" min="0.1" id="ValuenCut" />
+        <br />
+        <br />
+        <label for="ValuefCut"> Value of <b>f</b> (מקדם חיכוך)</label>
+        <input type="number" min="0.0001" id="ValuefCut" />
+        <br />
+        <br />
+        <label for="ValuekCut"> Value of <b>k</b> (משטחי מגע)</label>
+        <input type="number" min="1" id="ValuekCut" />
+        <br />
+        <br />
+        <div class="result-container">
+          <button id="calculate-bolt-cut">Result</button>
+          <span id="result-bolt-cut"></span>
+        </div>
+      </div>
+      <div></div>
+    </div>
+    <div class="MassSenter">
+      <br />
+      <br />
+      <h2 class="TITLE">מרכז כובד</h2>
+      <img src="/images/MassCenter.png" alt="" />
+
+      <form>
+        <label for="num-values">Number of values (מספר הברגים):</label>
+        <input
+          type="number"
+          id="num-values"
+          name="num-values"
+          min="1"
+          max="1000"
+        /><br />
+        <br />
+        <div id="values-container"></div>
+        <div class="result-container">
+          <br />
+          <input type="submit" value="Submit" />
+          <br />
+          <br />
+          <span id="result-MassSenter"></span>
+        </div>
+      </form>
+    </div>
+  </body>
+  <script src="Bolt.js"></script>
+</html>

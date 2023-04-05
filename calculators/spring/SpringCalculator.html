@@ -30,11 +30,11 @@
     <hr />
     <div class="padding-left">
       <div class="stressformula">
-        <h2>לפי אילוצים סטטים 'd' חישוב קוטר טיל</h2>
+        <h2>לפי אילוצים סטטים/דינמיים d חישוב קוטר טיל</h2>
         <img src="../../images/FSpring.png" width="200" alt="" />
         <br />
         <br />
-        <label for="ValueF">Value of <b>F</b> [mm]:&nbsp&nbsp&nbsp&nbsp</label>
+        <label for="ValueF">Value of <b>F</b> [N]:&nbsp&nbsp&nbsp&nbsp</label>
         <input type="number" min="0.0001" id="ValueF" />
         <br />
         <br />
@@ -47,9 +47,7 @@
         >
         <input type="number" min="0.00001" id="ValueK" /> -->
         <label for="ValueFS"
-          >Value of
-          <b>FS</b
-          >:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label
+          >Value of <b>FS</b> (מקדם בטחון):&nbsp&nbsp&nbsp</label
         >
         <input type="number" min="1" id="ValueFS" />
         <br />
@@ -60,7 +58,7 @@
         <input type="number" min="0" max="100" id="ValueMaxCut" />
         <br />
         <br />
-        <label for="ValueC">Value of <b>C</b> [N/mm]:</label>
+        <label for="ValueC">Value of <b>C</b> (מדד הקפיץ):</label>
         <input type="number" min="0.0001" id="ValueC" />
         <br />
         <br />
@@ -69,17 +67,23 @@
         <input type="radio" name="constraint" id="static-constraint" checked />
         <label for="dynamic-constraint">Dynamic Constraint</label>
         <input type="radio" name="constraint" id="dynamic-constraint" />
-
+        <br />
+        <br />
         <div id="FminContainer" style="display: none">
-          <label for="ValueFmin">F minimum :</label>
+          <label for="ValueFmin"><b>F</b> [N] minimum :</label>
           <input type="number" min="0.0001" id="ValueFmin" />
         </div>
+        <br />
+        <hr />
         <div id="dContainer" style="display: none">
-          <label for="smallDiDynamic">Small d :</label>
+          <label for="smallDiDynamic"> <b>d קוטר טיל התחלתי </b>:</label>
           <input type="number" min="0.0001" id="smallDiDynamic" />
+          <br />
+          <br />
         </div>
         <div id="nContainer" style="display: none">
-          <div>(optional for coil count calc)</div>
+          <div>(d לחישוב מס' הסלילים ו אורך רפוי יש להזין)</div>
+          <br />
           <label for="delta">δ :</label>
           <input type="number" min="0.0001" id="delta" />
           <label for="G">G :</label>
