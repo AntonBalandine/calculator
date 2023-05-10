@@ -35,7 +35,7 @@
         <img
           src="../../images/בורג במתיכה.png"
           width="400"
-          border-radius="50%"
+          style="border-radius: 5%"
         />
         <br />
         <br />
@@ -53,12 +53,12 @@
         </div>
       </div>
 
-      <div class="cut">
+      <div class="cut-Bolt">
         <h2 class="TITLE">גזירה</h2>
         <img
           src="../../images/בורג בגזירה.png"
           width="400"
-          border-radius="50%"
+          style="border-radius: 5%"
         />
         <br />
         <br />
@@ -88,8 +88,13 @@
     <div class="MassSenter">
       <br />
       <br />
+      <hr />
       <h2 class="TITLE">מרכז כובד</h2>
-      <img src="../../images/MassCenter.png" alt="" />
+      <img
+        src="../../images/MassCenter.png"
+        width="500"
+        style="border-radius: 10%"
+      />
 
       <form>
         <label for="num-values">Number of values (מספר הברגים):</label>
@@ -110,6 +115,65 @@
           <span id="result-MassSenter"></span>
         </div>
       </form>
+    </div>
+    <br />
+    <br />
+    <div class="Force">
+      <div class="divisionForce">
+        <h2 class="TITLE">חלוקת הכח בגזירה בניצב לציר הבורג</h2>
+        <img
+          src="/images/Bolt_To_Stand.png"
+          width="555"
+          style="border-radius: 10%"
+        />
+        <div>
+          <label for="F">Label <b>F</b>:</label>
+          <input type="number" id="F" name="F" value="0" /><br /><br />
+          <label for="e">Label <b>e</b>: </label>
+          <input type="number" id="e" name="e" value="0" /><br /><br />
+          <label for="l1"
+            >Label <b>l<sub>1</sub></b> (c מנקודה):</label
+          >
+          <input type="number" id="l1" name="l1" value="0" /><br /><br />
+          <label for="l2"
+            >Label <b>l<sub>2</sub></b> (c מנקודה):</label
+          >
+          <input type="number" id="l2" name="l2" value="0" />
+          <br />
+          <br />
+          <span class="result-container">
+            <button id="calculate-divisionForce">Result</button>
+            <span id="result-divisionForce"></span>
+          </span>
+          <br />
+          <br />
+        </div>
+      </div>
+      <div class="ParalelForce">
+        <h2 class="TITLE">חלוקה מכח גזירה אקסצנטרי</h2>
+        <img
+          src="/images/Bolt_Paralel.png"
+          width="555"
+          style="border-radius: 10%"
+        />
+        <br />
+        <label for="F">Label <b>F</b>:</label>
+        <input type="numbrer" id="F" value="0" />
+        <br />
+        <br />
+        <label for="F">Label <b>F</b>:</label>
+        <input type="numbrer" id="F" value="0" />
+        <br />
+        <br />
+        <label for="F">Label <b>F</b>:</label>
+        <input type="numbrer" id="F" value="0" />
+        <br />
+        <br />
+        <label for="F">Label <b>F</b>:</label>
+        <input type="numbrer" id="F" value="0" />
+        <br />
+        <br />
+      </div>
     </div>
   </body>
   <script src="Bolt.js"></script>

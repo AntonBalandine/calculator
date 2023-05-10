@@ -96,3 +96,13 @@ numValuesInput.addEventListener("input", function () {
     valuesContainer.appendChild(valueContainer);
   }
 });
+
+document.getElementById("calculate-divisionForce").onclick = () => {
+  const [F, e, l1, l2] = [
+    ...document.querySelectorAll(".divisionForce input"),
+  ].map((input) => input.valueAsNumber);
+
+  const c = (F * e) / (2 * l1 ** 2 + 2 * l2 ** 2);
+  document.getElementById("result-divisionForce").innerText =
+    "c = " + c.toFixed(3) + "[N/mm]";
+};
