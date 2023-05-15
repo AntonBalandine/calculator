@@ -87,3 +87,7 @@ body {
 .ParalelForce {
   padding-left: 300px;
 }
+
+.flex {
+  display: flex;
+}

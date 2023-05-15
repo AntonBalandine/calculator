@@ -97,12 +97,43 @@ numValuesInput.addEventListener("input", function () {
   }
 });
 
-document.getElementById("calculate-divisionForce").onclick = () => {
-  const [F, e, l1, l2] = [
+const calcDivisionForce = () => {
+  const [F, e, l1, l2, f] = [
     ...document.querySelectorAll(".divisionForce input"),
   ].map((input) => input.valueAsNumber);
 
   const c = (F * e) / (2 * l1 ** 2 + 2 * l2 ** 2);
-  document.getElementById("result-divisionForce").innerText =
-    "c = " + c.toFixed(3) + "[N/mm]";
+
+  const F1 = c * l1;
+  const F2 = c * l2;
+  document.getElementById(
+    "result-divisionForce"
+  ).innerText = `F''1 = ${F1.toFixed(3)} [N]
+F''2 = ${F2.toFixed(3)} [N]`;
+
+  return [F1, F2, f];
+};
+
+document.getElementById("calculate-divisionForce").onclick = calcDivisionForce;
+
+const calcCut = () => {
+  const [F, n] = [...document.querySelectorAll(".cut input")].map(
+    (input) => input.valueAsNumber
+  );
+  const resultedF = F / n;
+  document.getElementById("result-cut").innerText = `F' = ${resultedF.toFixed(
+    3
+  )} [N]`;
+
+  return resultedF;
+};
+document.getElementById("calculate-cut").onclick = calcCut;
+
+document.getElementById("calculate-p").onclick = () => {
+  const [F1, F2, f] = calcDivisionForce();
+  const resultedF = calcCut();
+
+  const p = resultedF + (F1 + F2) / f;
+
+  document.getElementById("result-p").innerText = `p = ${p.toFixed(3)}[N]`;
 };
