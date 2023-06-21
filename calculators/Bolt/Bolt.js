@@ -1,5 +1,7 @@
-var numValuesInput = document.getElementById("num-values");
-var valuesContainer = document.getElementById("values-container");
+const numValuesInput1 = document.getElementById("num-values");
+const valuesContainer1 = document.getElementById("values-container");
+const numValuesInput2 = document.getElementById("num-values2");
+const valuesContainer2 = document.getElementById("values-container2");
 
 const tensionButton = document.getElementById("calculate-bolt-tension");
 tensionButton.onclick = function () {
@@ -30,7 +32,10 @@ gravityCenterButton.onsubmit = function (e) {
 
   const xInputs = [];
   const yInputs = [];
-  const aInputs = [];
+  const D = document.querySelector(
+    ".MassSenter form #MassCenterA"
+  ).valueAsNumber;
+  const a = calcA(D);
 
   document
     .querySelectorAll(".xInput")
@@ -38,34 +43,42 @@ gravityCenterButton.onsubmit = function (e) {
   document
     .querySelectorAll(".yInput")
     .forEach((element) => yInputs.push(Number(element.value)));
-  document
-    .querySelectorAll(".aInput")
-    .forEach((element) => aInputs.push(Number(element.value)));
 
-  let moneX = 0;
-  let moneY = 0;
-  let mehane = 0;
-  for (let index = 0; index < xInputs.length; index++) {
-    const x = xInputs[index];
-    const a = aInputs[index];
-    const y = yInputs[index];
-    moneX += x * a;
-    moneY += y * a;
-    mehane += a;
-  }
+  const { resultX, resultY } = calcMassCenter(xInputs, yInputs, a);
 
-  const resultX = moneX / mehane;
-  const resultY = moneY / mehane;
   document.getElementById("result-MassSenter").innerHTML =
     "x^ = " + resultX.toFixed(3) + "<br/> y^ = " + resultY.toFixed(3);
 };
 
-numValuesInput.addEventListener("input", function () {
-  var numValues = numValuesInput.value;
+numValuesInput1.addEventListener("input", function () {
+  addInputs(numValuesInput1, valuesContainer1);
+});
+numValuesInput2.addEventListener("input", function () {
+  addInputs(numValuesInput2, valuesContainer2);
+});
+
+function calcMassCenter(xInputs, yInputs, a) {
+  let sumXa = 0;
+  let sumYa = 0;
+  let mehane = 0;
+  for (let index = 0; index < xInputs.length; index++) {
+    const x = xInputs[index];
+    const y = yInputs[index];
+    sumXa += x * a;
+    sumYa += y * a;
+    mehane += a;
+  }
+  const resultX = sumXa / mehane;
+  const resultY = sumYa / mehane;
+  return { resultX, resultY };
+}
+
+function addInputs(numInput, container) {
+  const numValues = numInput.value;
 
   // Remove any existing value inputs
-  while (valuesContainer.firstChild) {
-    valuesContainer.removeChild(valuesContainer.firstChild);
+  while (container.firstChild) {
+    container.removeChild(container.firstChild);
   }
 
   // Add new value inputs
@@ -82,23 +95,23 @@ numValuesInput.addEventListener("input", function () {
     yInput.placeholder = "Y value #" + (i + 1);
     yInput.className = "yInput";
 
-    var aInput = document.createElement("input");
-    aInput.type = "number";
-    aInput.name = "a-value-" + i;
-    aInput.placeholder = "A value #" + (i + 1);
-    aInput.className = "aInput";
+    // var aInput = document.createElement("input");
+    // aInput.type = "number";
+    // aInput.name = "a-value-" + i;
+    // aInput.placeholder = "A value (שטח חתך הבורג)" + (i + 1);
+    // aInput.className = "aInput";
 
     var valueContainer = document.createElement("div");
     valueContainer.appendChild(xInput);
     valueContainer.appendChild(yInput);
-    valueContainer.appendChild(aInput);
+    // valueContainer.appendChild(aInput);
 
-    valuesContainer.appendChild(valueContainer);
+    container.appendChild(valueContainer);
   }
-});
+}
 
 const calcDivisionForce = () => {
-  const [F, e, l1, l2, f] = [
+  const [F, e, l1, l2] = [
     ...document.querySelectorAll(".divisionForce input"),
   ].map((input) => input.valueAsNumber);
 
@@ -111,13 +124,13 @@ const calcDivisionForce = () => {
   ).innerText = `F''1 = ${F1.toFixed(3)} [N]
 F''2 = ${F2.toFixed(3)} [N]`;
 
-  return [F1, F2, f];
+  return [F1, F2];
 };
 
 document.getElementById("calculate-divisionForce").onclick = calcDivisionForce;
 
 const calcCut = () => {
-  const [F, n] = [...document.querySelectorAll(".cut input")].map(
+  const [F, n, f] = [...document.querySelectorAll(".cut input")].map(
     (input) => input.valueAsNumber
   );
   const resultedF = F / n;
@@ -125,15 +138,129 @@ const calcCut = () => {
     3
   )} [N]`;
 
-  return resultedF;
+  return [resultedF, f];
 };
 document.getElementById("calculate-cut").onclick = calcCut;
 
 document.getElementById("calculate-p").onclick = () => {
-  const [F1, F2, f] = calcDivisionForce();
-  const resultedF = calcCut();
+  const [F1, F2] = calcDivisionForce();
+  const [resultedF, f] = calcCut();
 
   const p = resultedF + (F1 + F2) / f;
 
   document.getElementById("result-p").innerText = `p = ${p.toFixed(3)}[N]`;
 };
+
+document.getElementById("calculate-cd").onclick = () => {
+  const [F, XF, YF, D, numberOfBolts] = [
+    ...document.querySelectorAll(".ParalelForce input"),
+  ].map((input) => input.valueAsNumber);
+
+  const xInputs = [];
+  const yInputs = [];
+
+  document
+    .querySelectorAll(".xInput")
+    .forEach((element) => xInputs.push(Number(element.value)));
+  document
+    .querySelectorAll(".yInput")
+    .forEach((element) => yInputs.push(Number(element.value)));
+
+  const a = calcA(D);
+  const { resultX: resultX0, resultY: resultY0 } = calcMassCenter(
+    xInputs,
+    yInputs,
+    a
+  );
+
+  const e = Math.sqrt((XF - resultX0) ** 2 + (YF - resultY0) ** 2);
+  const M = e * F;
+
+  const riResult = [];
+  let rSumSquare = 0;
+  for (let index = 0; index < xInputs.length; index++) {
+    const x = xInputs[index];
+    const y = yInputs[index];
+    const ri = Math.sqrt((x - resultX0) ** 2 + (y - resultY0) ** 2);
+    riResult.push(ri);
+    rSumSquare += ri ** 2;
+  }
+
+  const c = (F * e) / rSumSquare;
+
+  const FittResult = [];
+  const FixResult = [];
+  const FiyResult = [];
+  const FiResult = [];
+  for (let index = 0; index < riResult.length; index++) {
+    const ri = riResult[index];
+    const Fitt = c * ri;
+    FittResult.push(Fitt);
+
+    const xi = xInputs[index];
+    const COSi = (xi - resultX0) / ri;
+    const yi = yInputs[index];
+    const SINi = (yi - resultY0) / ri;
+
+    const Fix = -Fitt * SINi;
+    FixResult.push(Fix);
+    const Fiy = -Fitt * COSi;
+    FiyResult.push(Fiy);
+
+    const Fit = F / numberOfBolts;
+    const Fi = Math.sqrt(Fix ** 2 + (Fiy + Fit) ** 2);
+    FiResult.push(Fi);
+  }
+
+  console.log({ rResult: riResult, xInputs, yInputs, e, M, c });
+
+  document.getElementById("result-cd").innerHTML =
+    `M: ${M.toFixed(3)} [Nm]
+  <br/>
+  ` +
+    "x^ = " +
+    resultX0.toFixed(3) +
+    "<br/> y^ = " +
+    resultY0.toFixed(3) +
+    `
+  ${riResult
+    .map(
+      (r, i) =>
+        `<div style="padding-left: 5px;">  r${i + 1} = ${r.toFixed(
+          3
+        )} [mm]</div>`
+    )
+    .join("")}
+    <br/>
+    ${FiResult.map(
+      (Fi, i) =>
+        `<div style="padding-left: 5px;">  F${i + 1} = ${Fi.toFixed(
+          3
+        )} [N]</div>`
+    ).join("")}
+    `;
+};
+
+// Fi = Math.sqrt(Fix ** 2 + (Fiy + Fit) ** 2);
+
+// Fit = F/
+
+//const cos.i = (xi - x0) / ri;
+
+//const sin.i = (yi - y0) / ri;
+
+// const Fix = -Fitt * sin.i;
+
+// const Fiy = -Fitt * cos.i;
+
+// FTotal = Math.sqrt(Fix ** 2 + (Fiy + resultedF) ** 2);
+
+// var r = r;
+
+// const e = Math.sqrt((XF ** 2) + (YF ** 2));
+
+// const M = e * F;
+
+function calcA(D) {
+  return (Math.PI * D ** 2) / 4;
+}

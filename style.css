@@ -62,11 +62,12 @@ body {
 }
 
 .cut {
-  padding-left: 30px;
+  padding-left: 25px;
 }
 
 .cut-Bolt {
   padding-left: 300px;
+  padding-top: 70px;
 }
 
 .MassSenter {
@@ -85,9 +86,16 @@ body {
 }
 
 .ParalelForce {
-  padding-left: 300px;
+  padding-left: 100px;
 }
 
 .flex {
   display: flex;
+}
+
+.P {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }

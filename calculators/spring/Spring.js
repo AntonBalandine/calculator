@@ -1,6 +1,6 @@
 const dynamicConstraint = document.getElementById("dynamic-constraint");
 //document.getElementById("calculatespring").onclick = Springcalculator;
-document.getElementById("calculatespringw").onclick = springwahl;
+//document.getElementById("calculatespringw").onclick = springwahl;
 document.getElementById("calculatespringtau").onclick = resultspringtau;
 document.getElementById("stressformula").onclick = () => {
   if (dynamicConstraint.checked) {
@@ -76,9 +76,9 @@ function springwahl() {
   document.getElementById("resultspringw").innerText = "Result: " + K;
   staticStressFormula();
 }
-/*
+
 function resultspringtau() {
-  const K = document.getElementById("valueK").value;
+  const K = document.getElementById("ValueK").value;
 
   if (C <= 0) {
     alert("C cannot be <= 0");
@@ -92,7 +92,6 @@ function resultspringtau() {
 
   document.getElementById("resultspringw").innerText = "Result: " + resultwahl;
 }
-*/
 
 function staticStressFormula() {
   const F = document.getElementById("ValueF").value;

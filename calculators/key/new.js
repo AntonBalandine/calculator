@@ -10,11 +10,12 @@ squashResultButton.addEventListener("click", KeySquashCalculator);
 // console.log(`my name is ${f_name}`);
 
 function KeyCutCalculator() {
-  const T = document.getElementById(`valueT-cut`).value;
-  const L = document.getElementById("valueL-cut").value;
-  const Sy = document.getElementById("valueSy").value;
-  const FS = document.getElementById("valueFS-cut").value;
-  const result = (4 * T * FS) / (Sy * L);
+  const T = document.getElementById(`valueT-cut`).valueAsNumber;
+  const d = document.getElementById("valued-cut").valueAsNumber;
+  const L = document.getElementById("valueL-cut").valueAsNumber;
+  const Sy = document.getElementById("valueSy").valueAsNumber;
+  const FS = document.getElementById("valueFS-cut").valueAsNumber;
+  const result = (4 * T * FS) / (d * 0.001 * Sy * L);
 
   let range = 0;
   for (const key of Object.keys(table)) {
@@ -33,16 +34,16 @@ function KeyCutCalculator() {
 }
 
 const table = {
-  4: { b: 2, h: 2 },
-  9: { b: 3, h: 3 },
-  16: { b: 4, h: 4 },
-  25: { b: 5, h: 5 },
-  36: { b: 6, h: 6 },
-  56: { b: 8, h: 7 },
-  80: { b: 10, h: 8 },
-  96: { b: 12, h: 8 },
-  126: { b: 14, h: 9 },
-  160: { b: 16, h: 10 },
+  2: { b: 2, h: 2 },
+  3: { b: 3, h: 3 },
+  4: { b: 4, h: 4 },
+  5: { b: 5, h: 5 },
+  6: { b: 6, h: 6 },
+  7: { b: 8, h: 7 },
+  8: { b: 10, h: 8 },
+  8.5: { b: 12, h: 8 },
+  9: { b: 14, h: 9 },
+  10: { b: 16, h: 10 },
   198: { b: 18, h: 11 },
   240: { b: 20, h: 12 },
   308: { b: 22, h: 14 },
@@ -56,11 +57,12 @@ const table = {
 };
 
 function KeySquashCalculator() {
-  const T = document.getElementById("valueT").value;
-  const L = document.getElementById("valueL").value;
-  const Sc = document.getElementById("valueSc").value;
-  const FS = document.getElementById("valueFS").value;
-  const result = (2 * T * FS) / (Sc * L);
+  const T = document.getElementById("valueT").valueAsNumber;
+  const d = document.getElementById("valued-s").valueAsNumber;
+  const L = document.getElementById("valueL").valueAsNumber;
+  const Sc = document.getElementById("valueSc").valueAsNumber;
+  const FS = document.getElementById("valueFS").valueAsNumber;
+  const result = (2 * T * FS) / (d * 0.001 * Sc * L);
 
   let range = 0;
   for (const key of Object.keys(table)) {

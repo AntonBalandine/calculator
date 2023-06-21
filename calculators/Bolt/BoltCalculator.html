@@ -97,13 +97,18 @@
       />
 
       <form>
-        <label for="num-values">Number of values (מספר הברגים):</label>
+        <label for="MassCenterA">Label <b>D</b> [mm] (קוטר הבורג):</label>
+        <br />
+        <input type="number" id="MassCenterA" value="0" />
+        <br />
+
+        <label for="num-values">Number of Bolts (מספר הברגים):</label><br />
         <input
           type="number"
           id="num-values"
           name="num-values"
           min="1"
-          max="1000"
+          max="100"
         /><br />
         <br />
         <div id="values-container"></div>
@@ -131,23 +136,20 @@
         <div class="flex">
           <div class="divisionForce">
             <div>
-              <h2>מתיחה</h2>
-              <label for="F">Label <b>F</b>:</label>
+              <h2>מתיכה</h2>
+              <label for="F">Label <b>F</b> [N]:</label>
               <input type="number" id="F" name="F" value="0" /><br /><br />
-              <label for="e">Label <b>e</b>: </label>
+              <label for="e">Label <b>e</b> [mm]: </label>
               <input type="number" id="e" name="e" value="0" /><br /><br />
               <label for="l1"
-                >Label <b>l<sub>1</sub></b> (c מנקודה):</label
+                >Label <b>l<sub>1</sub></b> [mm]:</label
               >
               <input type="number" id="l1" name="l1" value="0" /><br /><br />
               <label for="l2"
-                >Label <b>l<sub>2</sub></b> (c מנקודה):</label
+                >Label <b>l<sub>2</sub></b> [mm]:</label
               >
               <input type="number" id="l2" name="l2" value="0" />
-              <br />
-              <br />
-              <label for="f">label <b>f</b>:</label>
-              <input type="number" id="f" name="f" value="0" />
+
               <br />
               <br />
               <span class="result-container">
@@ -159,45 +161,70 @@
 
           <div class="cut">
             <h2>גזירה</h2>
-            <label for="Fcut">Label <b>F</b>:</label>
+            <label for="Fcut">Label <b>F</b> [N]:</label>
             <input type="number" id="Fcut" name="F" value="0" /><br /><br />
-            <label for="n_cut">Label <b>n</b>: </label>
+            <label for="n_cut">Label <b>n</b> (מס' ברגים): </label>
             <input type="number" id="n_cut" name="n" value="0" /><br /><br />
+            <label for="f">label <b>f</b> (מקדם חיכוך):</label>
+            <input type="number" id="f" name="f" value="0" />
             <br />
             <span class="result-container">
               <button id="calculate-cut">Result</button>
               <span id="result-cut"></span>
             </span>
-            <span class="result-container">
-              <button id="calculate-p">Result</button>
-              <span id="result-p"></span>
-            </span>
           </div>
+        </div>
+        <div class="P">
+          <h2>
+            P [N]
+            <span style="font-size: 15px"
+              >(יש להזין את כל נתוני הגזירה והמתיכה)</span
+            >
+            <small></small>
+          </h2>
+          <span class="result-container">
+            <button id="calculate-p">Result</button>
+            <span id="result-p"></span>
+          </span>
         </div>
       </div>
       <div class="ParalelForce">
-        <h2 class="TITLE">חלוקה מכח גזירה אקסצנטרי</h2>
+        <h2 class="TITLE">חלוקה הכח גזירה אקסצנטרי</h2>
         <img
           src="../../images/Bolt_Paralel.png"
           width="555"
           style="border-radius: 10%"
         />
         <br />
-        <label for="F">Label <b>F</b>:</label>
-        <input type="numbrer" id="F" value="0" />
+        <label for="F">Label <b>F</b> [N]:</label>
+        <input type="number" id="F" value="0" />
         <br />
         <br />
-        <label for="F">Label <b></b>:</label>
-        <input type="numbrer" id="F" value="0" />
+        <label for="XF">Label <b>X(F)</b> [mm]:</label>
+        <input type="number" id="XF" value="0" />
         <br />
         <br />
-        <label for="F">Label <b></b>:</label>
-        <input type="numbrer" id="F" value="0" />
+        <label for="YF">Label <b>Y(F)</b> [mm]:</label>
+        <input type="number" id="YF" value="0" />
         <br />
         <br />
-        <label for="F">Label <b></b>:</label>
-        <input type="numbrer" id="F" value="0" />
+        <label for="YF">Label <b>D</b> [mm] (קוטר הבורג):</label>
+        <input type="number" id="YF" value="0" />
         <br />
+        <br />
+        <label for="num-values">Number of Bolts (מספר הברגים):</label>
+        <input
+          type="number"
+          id="num-values2"
+          name="num-values"
+          min="1"
+          max="1000"
+        /><br />
+        <div id="values-container2"></div>
+        <span class="result-container">
+          <button id="calculate-cd">Result</button>
+          <span id="result-cd"></span>
+        </span>
         <br />
       </div>
     </div>
