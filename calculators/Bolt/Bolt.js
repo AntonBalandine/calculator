@@ -2,8 +2,15 @@ const numValuesInput1 = document.getElementById("num-values");
 const valuesContainer1 = document.getElementById("values-container");
 const numValuesInput2 = document.getElementById("num-values2");
 const valuesContainer2 = document.getElementById("values-container2");
-
 const tensionButton = document.getElementById("calculate-bolt-tension");
+
+function round(num) {
+  return num.toLocaleString(undefined, {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 3,
+  });
+}
+
 tensionButton.onclick = function () {
   const F = document.getElementById("ValueF").value;
   const n = document.getElementById("ValueN").value;
@@ -11,7 +18,10 @@ tensionButton.onclick = function () {
   const result = F / n;
 
   document.getElementById("result-bolt-tension").innerText =
-    "Pi = " + result.toFixed(3) + "[N]";
+    "Pi = " + round(result) + "[N]";
+
+  document.querySelector("#bolt-tension .result-text").innerText =
+    "הכח על כל בורג";
 };
 
 const cutButton = document.getElementById("calculate-bolt-cut");
@@ -23,7 +33,7 @@ cutButton.onclick = function () {
   const result = F / (n * f * k);
 
   document.getElementById("result-bolt-cut").innerText =
-    "Pi = " + result.toFixed(3) + "[N]";
+    "Pi = " + round(result) + "[N]";
 };
 
 const gravityCenterButton = document.querySelector(`.MassSenter form`);
@@ -47,7 +57,7 @@ gravityCenterButton.onsubmit = function (e) {
   const { resultX, resultY } = calcMassCenter(xInputs, yInputs, a);
 
   document.getElementById("result-MassSenter").innerHTML =
-    "x^ = " + resultX.toFixed(3) + "<br/> y^ = " + resultY.toFixed(3);
+    "x(G) = " + resultX.toFixed(3) + "<br/> y(G) = " + resultY.toFixed(3);
 };
 
 numValuesInput1.addEventListener("input", function () {
@@ -218,9 +228,9 @@ document.getElementById("calculate-cd").onclick = () => {
     `M: ${M.toFixed(3)} [Nm]
   <br/>
   ` +
-    "x^ = " +
+    "x(G) = " +
     resultX0.toFixed(3) +
-    "<br/> y^ = " +
+    "<br/> y(G) = " +
     resultY0.toFixed(3) +
     `
   ${riResult

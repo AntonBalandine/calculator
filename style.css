@@ -57,6 +57,12 @@ body {
   box-shadow: 2px 2px 15px rgb(0 0 0 / 45%);
   margin-top: 10px;
 }
+
+.result-text {
+  width: 300px;
+  text-align: right;
+}
+
 .images {
   border-radius: 30%;
 }
@@ -81,8 +87,6 @@ body {
 .Force {
   padding-left: 3%;
   display: flex;
-  justify-content: first baseline;
-  align-items: center;
 }
 
 .ParalelForce {

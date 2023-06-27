@@ -78,19 +78,22 @@ function springwahl() {
 }
 
 function resultspringtau() {
-  const K = document.getElementById("ValueK").value;
+  const K = document.getElementById("ValueK").valueAsNumber;
+  const F = document.getElementById("valueFtau").valueAsNumber;
+  const d = document.getElementById("Valued").valueAsNumber;
+  const D = document.getElementById("ValueD").valueAsNumber;
+  // if (C <= 0) {
+  //   alert("C cannot be <= 0");
+  //   return;
+  // }
+  // if (isNaN(C)) {
+  //   alert("C must be number");
+  //   return;
+  // }
+  const resultwahl = K * ((8 * F * D) / (Math.PI * d ** 3));
 
-  if (C <= 0) {
-    alert("C cannot be <= 0");
-    return;
-  }
-  if (isNaN(C)) {
-    alert("C must be number");
-    return;
-  }
-  const resultwahl = K((8 * F * D) / ((Math.PI * d) ^ 3));
-
-  document.getElementById("resultspringw").innerText = "Result: " + resultwahl;
+  document.getElementById("resultspringtau").innerHTML =
+    "&tau; = " + resultwahl.toFixed(3);
 }
 
 function staticStressFormula() {
@@ -98,6 +101,8 @@ function staticStressFormula() {
   const C = document.getElementById("ValueC").value;
   const FS = Number(document.getElementById("ValueFS").value);
   const K = calcKbyC(C);
+
+  // input validation
 
   if (F <= 0) {
     alert("F cannot be <= 0 ");
@@ -108,10 +113,11 @@ function staticStressFormula() {
     return;
   }
 
-  if (FS <= 1 || FS >= 1.5) {
+  if (FS < 1 || FS > 1.5) {
     alert("FS not in correct range: 1 < FS < 1.5 ");
     return;
   }
+  //
 
   const ValueMaxCut = document.getElementById("ValueMaxCut").value / 100;
 
@@ -133,14 +139,14 @@ function staticStressFormula() {
     d = Number(key);
     T = K * ((8 * F * C) / (Math.PI * d ** 2));
     ratio = Tall / T;
-    if (ratio <= FS && ratio > 1 && ratio < 1.5) {
+    if (ratio >= FS && ratio > 1 && ratio < 1.5) {
       found = true;
       break;
     }
   }
 
   if (!found) {
-    alert("cannot find small d");
+    alert("Cannot find small d");
     return;
   }
   document.getElementById("resultspring").textContent = found
@@ -211,9 +217,9 @@ function dynamicStressFormula() {
     Lf = fittedDelta + GT + Ls;
   }
 
-  document.getElementById("resultspring").textContent = found
-    ? `d=${d}
-    ${N ? `N=${N} Nt=${Nt} Lf=${Lf.toFixed(2)}` : ""}`
+  document.getElementById("resultspring").innerHTML = found
+    ? `d=${d} [mm]<br/>
+    ${N ? `N=${N}<br/>Nt=${Nt}<br/> Lf=${Lf.toFixed(2)} [mm]` : ""}`
     : "Cannot find d";
   console.log("dynamic", { d, FS, Ks, K, Famp, Favg });
 }

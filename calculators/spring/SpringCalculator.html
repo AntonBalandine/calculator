@@ -49,13 +49,19 @@
         <label for="ValueFS"
           >Value of <b>FS</b> (מקדם בטחון):&nbsp&nbsp&nbsp</label
         >
-        <input type="number" min="1" id="ValueFS" />
+        <input type="number" min="1" id="ValueFS" placeholder="1 - 1.5" />
         <br />
         <br />
         <label for="ValueMaxCut"
           >Maximum <b>cut stregth %</b> from S<small>ut</small>:</label
         >
-        <input type="number" min="0" max="100" id="ValueMaxCut" />
+        <input
+          type="number"
+          min="0"
+          max="100"
+          id="ValueMaxCut"
+          placeholder="1 - 100"
+        />
         <br />
         <br />
         <label for="ValueC">Value of <b>C</b> (מדד הקפיץ):</label>
@@ -74,7 +80,6 @@
           <input type="number" min="0.0001" id="ValueFmin" />
         </div>
         <br />
-        <hr />
         <div id="dContainer" style="display: none">
           <label for="smallDiDynamic"> <b>d קוטר טיל התחלתי </b>:</label>
           <input type="number" min="0.0001" id="smallDiDynamic" />
@@ -100,14 +105,23 @@
       </div>
       <br />
       <br />
+      <hr />
       <div class="tau">
         <h2>משוואת מאמץ מתוקנת</h2>
-        <label for="valueF">Value of <b>F</b>[N]</label>
-        <input type="number" id="vaueF" />
+        <label for="valueFtau">Value of <b>F</b>[N]</label>
+        <input type="number" id="valueFtau" />
         <br />
         <br />
         <label for="ValueK">Value of <b>K</b> [-]:&nbsp&nbsp&nbsp&nbsp</label>
         <input type="number" min="0.0001" id="ValueK" />
+        <br />
+        <br />
+        <label for="Valued">Value of <b>d</b>[mm]</label>
+        <input type="number" id="Valued" />
+        <br />
+        <br />
+        <label for="ValueD">Value of <b>D</b>[mm]</label>
+        <input type="number" id="ValueD" />
         <br />
         <br />
         <div class="result-container">
