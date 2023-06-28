@@ -21,7 +21,7 @@ tensionButton.onclick = function () {
     "Pi = " + round(result) + "[N]";
 
   document.querySelector("#bolt-tension .result-text").innerText =
-    "הכח על כל בורג";
+    "(הכח על כל בורג)";
 };
 
 const cutButton = document.getElementById("calculate-bolt-cut");
@@ -57,7 +57,7 @@ gravityCenterButton.onsubmit = function (e) {
   const { resultX, resultY } = calcMassCenter(xInputs, yInputs, a);
 
   document.getElementById("result-MassSenter").innerHTML =
-    "x(G) = " + resultX.toFixed(3) + "<br/> y(G) = " + resultY.toFixed(3);
+    "x(G) = " + round(resultX) + "<br/> y(G) = " + round(resultY);
 };
 
 numValuesInput1.addEventListener("input", function () {

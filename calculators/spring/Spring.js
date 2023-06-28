@@ -93,7 +93,7 @@ function resultspringtau() {
   const resultwahl = K * ((8 * F * D) / (Math.PI * d ** 3));
 
   document.getElementById("resultspringtau").innerHTML =
-    "&tau; = " + resultwahl.toFixed(3);
+    "&tau; = " + resultwahl.toFixed(3) + " [N/mm&#178;]";
 }
 
 function staticStressFormula() {
