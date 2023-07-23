@@ -267,26 +267,6 @@ document.getElementById("calculate-cd").onclick = () => {
     `;
 };
 
-// Fi = Math.sqrt(Fix ** 2 + (Fiy + Fit) ** 2);
-
-// Fit = F/
-
-//const cos.i = (xi - x0) / ri;
-
-//const sin.i = (yi - y0) / ri;
-
-// const Fix = -Fitt * sin.i;
-
-// const Fiy = -Fitt * cos.i;
-
-// FTotal = Math.sqrt(Fix ** 2 + (Fiy + resultedF) ** 2);
-
-// var r = r;
-
-// const e = Math.sqrt((XF ** 2) + (YF ** 2));
-
-// const M = e * F;
-
 function calcA(D) {
   return (Math.PI * D ** 2) / 4;
 }

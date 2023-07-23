@@ -1,11 +1,10 @@
 //HTMlקישורים ל
+const dynamicConstraintRadioButton =
+  document.getElementById("dynamic-constraint");
 
-const dynamicConstraint = document.getElementById("dynamic-constraint");
-//document.getElementById("calculatespring").onclick = Springcalculator;
-//document.getElementById("calculatespringw").onclick = springwahl;
 document.getElementById("calculatespringtau").onclick = resultspringtau;
 document.getElementById("stressformula").onclick = () => {
-  if (dynamicConstraint.checked) {
+  if (dynamicConstraintRadioButton.checked) {
     dynamicStressFormula();
   } else {
     staticStressFormula();
@@ -16,15 +15,21 @@ document
   .getElementById("static-constraint")
   .addEventListener("change", radioChange);
 
-dynamicConstraint.addEventListener("change", radioChange);
+dynamicConstraintRadioButton.addEventListener("change", radioChange);
 
-function radioChange(e) {
+function radioChange() {
   const container = document.getElementById("FminContainer");
-  container.style.display = dynamicConstraint.checked ? "block" : "none";
+  container.style.display = dynamicConstraintRadioButton.checked
+    ? "block"
+    : "none";
   const smallDcontainer = document.getElementById("dContainer");
-  smallDcontainer.style.display = dynamicConstraint.checked ? "block" : "none";
+  smallDcontainer.style.display = dynamicConstraintRadioButton.checked
+    ? "block"
+    : "none";
   const nContainer = document.getElementById("nContainer");
-  nContainer.style.display = dynamicConstraint.checked ? "block" : "none";
+  nContainer.style.display = dynamicConstraintRadioButton.checked
+    ? "block"
+    : "none";
 }
 
 //טבלת עובי טיל קפיץ עם
@@ -159,7 +164,7 @@ function staticStressFormula() {
   }
 
   if (!found) {
-    alert("Cannot find small d");
+    alert("Cannot find d ");
     return;
   }
   document.getElementById("resultspring").textContent = found
