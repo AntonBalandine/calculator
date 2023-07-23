@@ -1,8 +1,12 @@
+//HTMlקישורים ל
+
 const numValuesInput1 = document.getElementById("num-values");
 const valuesContainer1 = document.getElementById("values-container");
 const numValuesInput2 = document.getElementById("num-values2");
 const valuesContainer2 = document.getElementById("values-container2");
 const tensionButton = document.getElementById("calculate-bolt-tension");
+
+//מעגל תוצאות ומראה עד שלוש ספרות אחרי הנקודה
 
 function round(num) {
   return num.toLocaleString(undefined, {
@@ -11,6 +15,8 @@ function round(num) {
   });
 }
 
+//המתיכות בברגים בכח מתיכה
+
 tensionButton.onclick = function () {
   const F = document.getElementById("ValueF").value;
   const n = document.getElementById("ValueN").value;
@@ -18,11 +24,13 @@ tensionButton.onclick = function () {
   const result = F / n;
 
   document.getElementById("result-bolt-tension").innerText =
-    "Pi = " + round(result) + "[N]";
+    "Pi = " + round(result) + " [N]";
 
   document.querySelector("#bolt-tension .result-text").innerText =
     "(הכח על כל בורג)";
 };
+
+//המתיחות בברגים בכח גזירה
 
 const cutButton = document.getElementById("calculate-bolt-cut");
 cutButton.onclick = function () {
@@ -35,6 +43,8 @@ cutButton.onclick = function () {
   document.getElementById("result-bolt-cut").innerText =
     "Pi = " + round(result) + "[N]";
 };
+
+//פונקציית מרכז כובד
 
 const gravityCenterButton = document.querySelector(`.MassSenter form`);
 gravityCenterButton.onsubmit = function (e) {
@@ -120,6 +130,8 @@ function addInputs(numInput, container) {
   }
 }
 
+//חלוקת הכח בגזירה בניצב לציר הבורג
+
 const calcDivisionForce = () => {
   const [F, e, l1, l2] = [
     ...document.querySelectorAll(".divisionForce input"),
@@ -131,8 +143,8 @@ const calcDivisionForce = () => {
   const F2 = c * l2;
   document.getElementById(
     "result-divisionForce"
-  ).innerText = `F''1 = ${F1.toFixed(3)} [N]
-F''2 = ${F2.toFixed(3)} [N]`;
+  ).innerText = `F'1 = ${F1.toFixed(3)} [N]
+F'2 = ${F2.toFixed(3)} [N]`;
 
   return [F1, F2];
 };
@@ -140,26 +152,30 @@ F''2 = ${F2.toFixed(3)} [N]`;
 document.getElementById("calculate-divisionForce").onclick = calcDivisionForce;
 
 const calcCut = () => {
-  const [F, n, f] = [...document.querySelectorAll(".cut input")].map(
+  const [F, n, fFriction] = [...document.querySelectorAll(".cut input")].map(
     (input) => input.valueAsNumber
   );
   const resultedF = F / n;
-  document.getElementById("result-cut").innerText = `F' = ${resultedF.toFixed(
+  document.getElementById("result-cut").innerText = `F'' = ${resultedF.toFixed(
     3
   )} [N]`;
 
-  return [resultedF, f];
+  return [resultedF, fFriction];
 };
 document.getElementById("calculate-cut").onclick = calcCut;
 
 document.getElementById("calculate-p").onclick = () => {
   const [F1, F2] = calcDivisionForce();
-  const [resultedF, f] = calcCut();
-
-  const p = resultedF + (F1 + F2) / f;
-
-  document.getElementById("result-p").innerText = `p = ${p.toFixed(3)}[N]`;
+  const [fTag, fFriction] = calcCut();
+  const p1 = fTag + F1 / fFriction;
+  const p2 = fTag + F2 / fFriction;
+  document.getElementById("result-p").innerText = `
+  p1 = ${round(p1)}[N]
+  p2 = ${round(p2)}[N]
+  `;
 };
+
+//חלוקת הכח בגיזרה אקסנטרית
 
 document.getElementById("calculate-cd").onclick = () => {
   const [F, XF, YF, D, numberOfBolts] = [

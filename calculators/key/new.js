@@ -1,13 +1,26 @@
+//HTMlקישורים ל
+
 const cutResultButton = document.getElementById("calculate-key-cut"); // catch result button
 cutResultButton.addEventListener("click", KeyCutCalculator); // listen to 'click' on the result button
 const squashResultButton = document.getElementById("calculate-key-squash");
 // squashResultButton.style.color = "red";
 squashResultButton.addEventListener("click", KeySquashCalculator);
 
+//מעגל תוצאות ומראה עד שלוש ספרות אחרי הנקודה
+
+function round(num) {
+  return num.toLocaleString(undefined, {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 3,
+  });
+}
+
 // //const f_name = "anton";
 // const f_name = "10";
 // console.log(typeof f_name); // 'string'
 // console.log(`my name is ${f_name}`);
+
+//פונקצייה למציאת עובי וגובה השגם בגזירה
 
 function KeyCutCalculator() {
   const T = document.getElementById(`valueT-cut`).valueAsNumber;
@@ -25,13 +38,20 @@ function KeyCutCalculator() {
       break;
     }
   }
+
+  if (range === 0) {
+    return alert("Table range not found");
+  }
+
   // range = 9
-  document.getElementById("result-cut").innerText = `result: ${result.toFixed(
-    3
-  )}
+  document.getElementById("result-cut").innerText = `result: (h) = ${round(
+    result
+  )} ${" [mm]"}
   b: ${table[range].b} ${"mm"}
   h: ${table[range].h} ${"mm"}`;
 }
+
+//טבלת מידות השגמים
 
 const table = {
   2: { b: 2, h: 2 },
@@ -56,6 +76,8 @@ const table = {
   26: { b: 50, h: 28 },
 };
 
+//פונקצייה למציאת עובי וגובה השגם מעיכה
+
 function KeySquashCalculator() {
   const T = document.getElementById("valueT").valueAsNumber;
   const d = document.getElementById("valued-s").valueAsNumber;
@@ -63,6 +85,8 @@ function KeySquashCalculator() {
   const Sc = document.getElementById("valueSc").valueAsNumber;
   const FS = document.getElementById("valueFS").valueAsNumber;
   const result = (2 * T * FS) / (d * 0.001 * Sc * L);
+
+  //ללואה על הטבלה של מידות השגמים
 
   let range = 0;
   for (const key of Object.keys(table)) {
@@ -72,8 +96,16 @@ function KeySquashCalculator() {
       break;
     }
   }
-  // range = 9
-  document.getElementById("result-squash").innerText = `result: ${result}
+
+  if (range === 0) {
+    return alert("Table range not found");
+  }
+
+  //פלט של התוצאה הנבחרת
+
+  document.getElementById("result-squash").innerText = `result: (b) = ${round(
+    result
+  )} [mm]
   b: ${table[range].b} ${"mm"}
   h: ${table[range].h} ${"mm"}`;
 }

@@ -1,3 +1,5 @@
+//HTMlקישורים ל
+
 const dynamicConstraint = document.getElementById("dynamic-constraint");
 //document.getElementById("calculatespring").onclick = Springcalculator;
 //document.getElementById("calculatespringw").onclick = springwahl;
@@ -25,6 +27,8 @@ function radioChange(e) {
   nContainer.style.display = dynamicConstraint.checked ? "block" : "none";
 }
 
+//טבלת עובי טיל קפיץ עם
+
 const table = {
   1.0: { FDC: 1800, TDC: 1700 },
   1.3: { FDC: 1750, TDC: 1700 },
@@ -32,14 +36,17 @@ const table = {
   2.0: { FDC: 1670, TDC: 1600 },
   2.5: { FDC: 1600, TDC: 1600 },
   3.0: { FDC: 1550, TDC: 1570 },
+  3.5: { FDC: 1550, TDC: 1500 },
   4.0: { FDC: 1540, TDC: 1500 },
-  4.5: { FDC: 1510, TDC: 1500 },
-  5.0: { FDC: 1470, TDC: 1490 },
-  6.0: { FDC: 1440, TDC: 1470 },
+  4.5: { FDC: 1510, TDC: 1490 },
+  5.0: { FDC: 1470, TDC: 1470 },
+  6.0: { FDC: 1440, TDC: 1420 },
   7.0: { FDC: 1400, TDC: 1420 },
   8.0: { FDC: 1380, TDC: 1370 },
   10.0: { FDC: 1320, TDC: 1340 },
 };
+
+//משוואת קוטר טיל
 
 function Springcalculator() {
   const D = Number(document.getElementById("ValueD").value);
@@ -59,6 +66,8 @@ function Springcalculator() {
   document.getElementById("resultspring").innerText = "Result: " + resultspring;
 }
 
+//C שיוך
+
 function springwahl() {
   const C = document.getElementById("ValueCb").value;
 
@@ -76,6 +85,8 @@ function springwahl() {
   document.getElementById("resultspringw").innerText = "Result: " + K;
   staticStressFormula();
 }
+
+//משוואת מאמץ מתוקנת
 
 function resultspringtau() {
   const K = document.getElementById("ValueK").valueAsNumber;
@@ -95,6 +106,8 @@ function resultspringtau() {
   document.getElementById("resultspringtau").innerHTML =
     "&tau; = " + resultwahl.toFixed(3) + " [N/mm&#178;]";
 }
+
+//מציאת קוטר טיל קפיץ לפי אילוצים סטטים
 
 function staticStressFormula() {
   const F = document.getElementById("ValueF").value;
@@ -150,10 +163,12 @@ function staticStressFormula() {
     return;
   }
   document.getElementById("resultspring").textContent = found
-    ? "d=" + d
+    ? "d=" + d + " [mm]"
     : "Cannot find d";
   console.log("stressformula", { T, d, Sut, Tall, ratio });
 }
+
+//מציאת קוטר טיל קפיץ לפי אילוצים דינמים
 
 function dynamicStressFormula() {
   const Fmax = Number(document.getElementById("ValueF").value);
@@ -214,7 +229,7 @@ function dynamicStressFormula() {
     const fittedDelta = (8 * Fmax * D ** 3 * N) / (G * d ** 4);
     const GT = (Nt - 1) * 0.5;
     const Ls = Nt * d;
-    Lf = fittedDelta + GT + Ls;
+    Lf = fittedDelta + GT * 0.5 + Ls;
   }
 
   document.getElementById("resultspring").innerHTML = found
