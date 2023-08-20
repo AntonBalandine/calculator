@@ -89,6 +89,24 @@ body {
   display: flex;
 }
 
+.choose_bolt1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.choose_bolt {
+  padding-left: 3%;
+}
+
+#choose_bolt .result-container {
+  width: max-content;
+}
+
+#result-choose-bolt {
+  padding-left: 10px;
+}
+
 .ParalelForce {
   padding-left: 100px;
 }

@@ -5,6 +5,10 @@ const valuesContainer1 = document.getElementById("values-container");
 const numValuesInput2 = document.getElementById("num-values2");
 const valuesContainer2 = document.getElementById("values-container2");
 const tensionButton = document.getElementById("calculate-bolt-tension");
+const chooseBoltCalc = document.getElementById("choose-bolt-calc");
+const chooseBotResult = document.getElementById("result-choose-bolt");
+
+chooseBoltCalc.onclick = calcTypeOfBolt;
 
 //מעגל תוצאות ומראה עד שלוש ספרות אחרי הנקודה
 
@@ -269,4 +273,67 @@ document.getElementById("calculate-cd").onclick = () => {
 
 function calcA(D) {
   return (Math.PI * D ** 2) / 4;
+}
+
+const table = {
+  //  PC    Sp
+  4.6: 225,
+  4.8: 310,
+  5.8: 380,
+  8.8: 600,
+  9.8: 650,
+  10.9: 830,
+  12.9: 970,
+};
+
+const DcTable = {
+  3.141: { Designation: "M 4", D: 4, pitch: 0.7 },
+  4.019: { Designation: "M 5", D: 5, pitch: 0.8 },
+  4.773: { Designation: "M 6", D: 6, pitch: 1 },
+  6.466: { Designation: "M 8", D: 8, pitch: 1.25 },
+  8.16: { Designation: "M 10", D: 10, pitch: 1.5 },
+  9.853: { Designation: "M 12", D: 12, pitch: 1.75 },
+  13.546: { Designation: "M 16", D: 16, pitch: 2 },
+  16.933: { Designation: "M 20", D: 20, pitch: 2.5 },
+  20.319: { Designation: "M 24", D: 24, pitch: 3 },
+  25.706: { Designation: "M 30", D: 30, pitch: 3.5 },
+  31.093: { Designation: "M 36", D: 36, pitch: 4 },
+  36.479: { Designation: "M 42", D: 42, pitch: 4.5 },
+  41.866: { Designation: "M 48", D: 48, pitch: 5 },
+  49.252: { Designation: "M 56", D: 56, pitch: 5.5 },
+  56.639: { Designation: "M 64", D: 64, pitch: 6 },
+  64.639: { Designation: "M 72", D: 72, pitch: 6 },
+  72.639: { Designation: "M 80", D: 80, pitch: 6 },
+  82.639: { Designation: "M 90", D: 90, pitch: 6 },
+  92.639: { Designation: "M 100", D: 100, pitch: 6 },
+};
+
+function calcTypeOfBolt() {
+  const [P, FS, f] = [...document.querySelectorAll("#choose_bolt input")].map(
+    (input) => Number(input.value)
+  );
+  const PC = document.querySelector("#choose_bolt select").value;
+  const Sp = table[PC];
+  const Ac = ((1.25 * P) / Sp) * FS;
+  const Dc = Math.sqrt((4 * Ac) / Math.PI);
+  const boltDiameter = Number(
+    Object.keys(DcTable).find((currentDc) => Number(currentDc) > Dc)
+  );
+  const { Designation, D, pitch } = DcTable[boltDiameter];
+
+  const Dm = (D + boltDiameter) / 2;
+  const tanALFA = (pitch / Math.PI) * Dm;
+  const secTETA = 1 / Math.cos(60);
+  const Tt =
+    ((P * Dm) / 2) * ((f * secTETA + tanALFA) / (1 - f * secTETA * tanALFA)); //מומנט הסגירת הדרוש הבורג
+
+  console.log({ f, P, FS, PC, Sp, Designation, D, pitch, tanALFA, Tt });
+
+  chooseBotResult.innerHTML = `
+    <div>${Designation}</div>
+    <div> D=${D} [mm]</div>
+    <div>pitch=${pitch}</div>
+    <br/>
+    <div>Tt: ${Tt.toFixed(3)} [N*mm] (מומנט הסגירת הדרוש לבורג) </div> 
+  `;
 }

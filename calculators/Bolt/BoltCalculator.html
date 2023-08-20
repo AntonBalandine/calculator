@@ -234,6 +234,54 @@
         <br />
       </div>
     </div>
+    <br />
+    <hr />
+    <div id="choose_bolt" class="choose_bolt">
+      <br />
+      <br />
+      <div class="choose_bolt1">
+        <h1>בחירת הבורג</h1>
+        <h2>מציאת בורג מתאים מאילוצי כח</h2>
+      </div>
+      <br />
+      <img
+        src="/images/M_bolts .png"
+        width="333"
+        style="border-radius: 10%"
+        alt=""
+      />
+      <br />
+      <br />
+      <label for="P"
+        ><b>P</b><span style="font-size: 10px">(MAX)</span> [N]:</label
+      >
+      <input type="number" id="" value="0" />
+      <br />
+      <br />
+      <label for="PC"><b>Property Class</b> (דרגת חוזק) :</label>
+      <select name="propertyClass" id="">
+        <option value="4.6">4.6</option>
+        <option value="4.8">4.8</option>
+        <option value="5.8">5.8</option>
+        <option value="8.8">8.8</option>
+        <option value="9.8">9.8</option>
+        <option value="10.9">10.9</option>
+        <option value="12.9">12.9</option>
+      </select>
+      <br />
+      <br />
+      <label for="FS"><b>F.S.</b> (מקדם בטחון):</label>
+      <input type="number" id="" value="0" />
+      <br />
+      <br />
+      <label for="f">Label <b>f</b> [-] (מקדם בטחון):</label>
+      <input type="number" id="" value="0" />
+      <br />
+      <br />
+      <span class="result-container">
+        <button id="choose-bolt-calc">Result</button>
+        <span id="result-choose-bolt"></span>
+    </div>
   </body>
-  <script src="Bolt.js"></script>
+  <script src="Bolt.js" defer></script>
 </html>
